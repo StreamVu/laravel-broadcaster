@@ -178,7 +178,7 @@ class AblyBroadcaster extends Broadcaster
     public function broadcast($channels, $event, $payload = [])
     {
         try {
-            foreach ($this->formatChannels($channels) as $channel) {
+            foreach ($channels as $channel) {
                 $this->ably->channels->get($channel)->publish(
                     $this->buildAblyMessage($event, $payload)
                 );
